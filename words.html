@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo Genético - Palabra Oculta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        #output {
+            width: 60%;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        #output p {
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Algoritmo Genético - Palabra Oculta</h1>
+
+    <input type="text" id="target-word-input" placeholder="Escribe la palabra que quieres encontrar...">
+    
+    <div class="info">
+        <p>Escribe la palabra que quieras en la entrada de texto.</p>
+        <p>Pulsa "Iniciar" para comenzar a correr el algoritmo</p>
+        <p>En la tabla se verán las variaciones de las generaciones y las iteraciones hasta encontrar la solución.</p>
+        <p>El algoritmo tiene un maximo de 2000 generación</p>
+    </div>
+    <button id="start-button">Iniciar</button>
+
+    <div id="output">
+        <p><strong>Progreso:</strong></p>
+        <p id="generation">Generación: 0</p>
+        <p id="best-word">Mejor palabra: -</p>
+        <p id="fitness">Fitness: -</p>
+        
+        <table id="population-table">
+            <thead>
+                <tr>
+                    <th>Posición</th>
+                    <th>Palabra</th>
+                    <th>Fitness</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="word-genetic.js"></script>
+
+</body>
+</html>

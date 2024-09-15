@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos Genéticos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 80%;
+        }
+
+        .block {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 45%;
+            transition: transform 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .block:hover {
+            transform: translateY(-5px);
+        }
+
+        .block h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Algoritmos Genéticos</h1>
+
+    <div class="container">
+        <!-- Bloque para Sudoku -->
+        <a href="sudoku.html" class="block">
+            <h2>Sudoku</h2>
+        </a>
+
+        <!-- Bloque para Juego de Palabras Ocultas -->
+        <a href="words.html" class="block">
+            <h2>Palabra Oculta</h2>
+        </a>
+    </div>
+
+</body>
+</html>

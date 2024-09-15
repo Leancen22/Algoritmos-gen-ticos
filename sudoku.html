@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudoku Solver - Genetic Algorithm</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    /* Establecer un ancho fijo o porcentual para cada sección */
+    .left-section {
+        width: 45%; /* Ajusta el ancho a tus necesidades */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .right-section {
+        width: 50%; /* La tabla ocupará más espacio */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sudoku-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 50px);
+        grid-template-rows: repeat(4, 50px);
+        gap: 5px;
+        margin-bottom: 20px;
+    }
+
+    .sudoku-cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #000;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #f0f0f0;
+    }
+
+    .fixed-cell {
+        background-color: #ddd;
+    }
+
+    .mutated-cell {
+        background-color: black;
+        color: white;
+    }
+
+    .crossed-cell {
+        background-color: lightgreen;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .table-header {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+
+    .info {
+        margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+    <h1>
+        Algoritmo Genético - Sudoku
+    </h1>
+    <div class="container">
+        <div class="left-section">
+            <div id="sudoku-grid" class="sudoku-grid"></div>
+            <div>
+                <button id="start-button">Iniciar</button>
+                <button id="restart-button">Reiniciar</button>
+                <label for="filled-cells">Rellenar celdas:</label>
+                <input type="number" id="filled-cells" min="0" max="16" value="7" />
+            </div>
+            <div class="info">
+                <p>Pulsa "Iniciar" para comenzar a correr el algoritmo</p>
+                <p>Para especificar un número de celdas resueltas, indica el número en el campo de entrada y presiona "Reiniciar" para aplicar los cambios.</p>
+                <p>Para comenzar de nuevo, presiona "Reiniciar" y luego "Iniciar".</p>
+                <p>En la tabla se verán las variaciones de las generaciones y las iteraciones hasta encontrar la solución.</p>
+                <p>El algoritmo tiene un maximo de 2000 generación</p>
+            </div>
+        </div>
+    
+        <div class="right-section">
+            <div id="iterations">Generación: 0</div>
+            <table id="top-candidates-table">
+                <thead>
+                <tr class="table-header">
+                    <th>Rango</th>
+                    <th>Tabla de posiciones</th>
+                    <th>Fitness</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+  
+    <script src="sudoku-genetic.js">
+        const tableBody = document.getElementById("table-body");
+
+function initializeTable() {
+            tableBody.innerHTML = ''; // Limpiar cualquier contenido previo
+
+            // Crear 10 filas por defecto
+            for (let i = 1; i <= 10; i++) {
+                const tr = document.createElement('tr');
+
+                // Columna de rango (1 a 10)
+                const rankTd = document.createElement('td');
+                rankTd.textContent = i;
+                tr.appendChild(rankTd);
+
+                // Columna de tabla de posiciones (todo en 0 por defecto)
+                const gridTd = document.createElement('td');
+                gridTd.textContent = '0, 0, 0, 0'; // Representación de una fila del Sudoku
+                tr.appendChild(gridTd);
+
+                // Columna de fitness (todo en 0 por defecto)
+                const fitnessTd = document.createElement('td');
+                fitnessTd.textContent = '0'; // Fitness inicial en 0
+                tr.appendChild(fitnessTd);
+
+                tableBody.appendChild(tr); // Agregar la fila a la tabla
+            }
+        }
+
+        // Llamar a la función para inicializar la tabla cuando se carga la página
+        window.onload = initializeTable;
+    </script>
+</body>
+</html>
