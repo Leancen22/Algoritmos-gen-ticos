@@ -68,10 +68,8 @@ function generateRandomSudoku(filledCellsCount) {
         [0, 0, 0, 0]
     ];
 
-    // Generar un Sudoku completamente resuelto
     solveSudoku(baseSudoku);
 
-    // Eliminar celdas aleatoriamente hasta obtener el número de celdas deseadas llenas
     const cellsToRemove = 16 - filledCellsCount;
     removeCells(baseSudoku, cellsToRemove);
 
@@ -79,14 +77,12 @@ function generateRandomSudoku(filledCellsCount) {
 }
 
 function isValidNumber(sudoku, row, col, number) {
-    // Verificar la fila
     for (let j = 0; j < 4; j++) {
         if (sudoku[row][j] === number) {
             return false;
         }
     }
 
-    // Verificar la columna
     for (let i = 0; i < 4; i++) {
         if (sudoku[i][col] === number) {
             return false;

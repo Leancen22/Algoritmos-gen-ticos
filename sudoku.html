@@ -128,6 +128,21 @@
             
     }
 
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: right;
+        background-color: #e0e0e0;
+        color: #333333;
+        padding: 8px 0;
+    }
+
+    span {
+        margin-right: 20px;
+    }
+
   </style>
 </head>
 <body>
@@ -166,37 +181,34 @@
             </table>
         </div>
     </div>
+
+    <!-- <footer><span>Desarrollado por Bitnow</span></footer> -->
   
     <script src="sudoku-genetic.js">
         const tableBody = document.getElementById("table-body");
 
 function initializeTable() {
-            tableBody.innerHTML = ''; // Limpiar cualquier contenido previo
+            tableBody.innerHTML = '';
 
-            // Crear 10 filas por defecto
             for (let i = 1; i <= 10; i++) {
                 const tr = document.createElement('tr');
 
-                // Columna de rango (1 a 10)
                 const rankTd = document.createElement('td');
                 rankTd.textContent = i;
                 tr.appendChild(rankTd);
 
-                // Columna de tabla de posiciones (todo en 0 por defecto)
                 const gridTd = document.createElement('td');
-                gridTd.textContent = '0, 0, 0, 0'; // Representación de una fila del Sudoku
+                gridTd.textContent = '0, 0, 0, 0';
                 tr.appendChild(gridTd);
 
-                // Columna de fitness (todo en 0 por defecto)
                 const fitnessTd = document.createElement('td');
-                fitnessTd.textContent = '0'; // Fitness inicial en 0
+                fitnessTd.textContent = '0';
                 tr.appendChild(fitnessTd);
 
-                tableBody.appendChild(tr); // Agregar la fila a la tabla
+                tableBody.appendChild(tr);
             }
         }
 
-        // Llamar a la función para inicializar la tabla cuando se carga la página
         window.onload = initializeTable;
     </script>
 </body>
