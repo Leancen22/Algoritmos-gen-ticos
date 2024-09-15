@@ -1,5 +1,5 @@
 let targetWord = "";
-const alphabet = "abcdefghijklmnopqrstuvwxyz";
+const alphabet = "abcdefghijklmnopqrstuvwxyzñáéíóú_+=-*/.,;:!?¿¡()[]{}0123456789";
 const POP_SIZE = 100;
 const MAX_GENERATIONS = 1000; 
 const MUTATION_RATE = 0.1;
